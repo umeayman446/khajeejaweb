@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Travels, Khadija! ✈️</title>
+    <style>
+        /* CSS Styling */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        /* Floating Emojis Container */
+        
+        .emoji-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp 6s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+        /* Main Container */
+        
+        .container {
+            text-align: center;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 90%;
+            width: 500px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        h1 {
+            color: #ff477e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .subtitle {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        /* Interactive Card */
+        
+        .card {
+            background: #ffffff;
+            border: 2px dashed #ff7096;
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 112, 150, 0.2);
+        }
+        
+        .card-title {
+            color: #ff7096;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        /* Message Style */
+        
+        .message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-in-out;
+            text-align: left;
+            line-height: 1.6;
+            color: #495057;
+            font-size: 1.05rem;
+        }
+        
+        .message.open {
+            max-height: 700px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ffe5ec;
+        }
+        
+        .message p {
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            color: #ff477e;
+            font-weight: bold;
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Emojis Background -->
+    <div class="emoji-bg" id="emojiBg"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Safe Travels, Khadija! ✈️🌍</h1>
+        <p class="subtitle">Click the letter below to read my message for you 💌</p>
+
+        <div class="card" onclick="toggleMessage()">
+            <div class="card-title" id="cardPrompt">Tap to Open Letter ✉️</div>
+
+            <div class="message" id="secretMessage">
+                <p>Oye <strong>Khadija</strong>! 🗺️</p>
+
+                <p>Akhirkar tum ja hi rhi ho! Tumhare sath guzra hua waqt boht hi zyada accha tha, woh saari baatein aur yaadein hamesha yaad rahengi. Tum sach me boht acchi ho! 🌸✨</p>
+
+                <p>Meri dua hai ke <span class="highlight">Allah tumhare saare dreams poore kare</span> aur <span class="highlight">Allah tumhare naseeb tum se bhi zyada acche kare! 🤲❤️</span></p>
+
+                <p>Wahan pohnch kar <span class="highlight">apna boht zyada khayal rakhna</span> aur reels roz dekhna (aur mujhe send bhi karna! 😉📲).</p>
+
+                <p>Zindagi me kabhi bhi kisi bhi cheez ki zaroort ho, to <span class="highlight">tension free ho kar yaad karna</span>, main hamesha hazir hoon. 🤝🌟</p>
+
+                <p>I will miss you so much! 😭💔 Naye safar ke liye meri taraf se tumhe Best of Luck! Mujhe tumse dubara milne ka boht besabri se wait rahega! 🫂🛫</p>
+
+                <p>Safe flight and take care! 🎒👋</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Interactive Functions
+
+        // 1. Toggle Letter Open/Close
+        function toggleMessage() {
+            const message = document.getElementById('secretMessage');
+            const prompt = document.getElementById('cardPrompt');
+
+            if (message.classList.contains('open')) {
+                message.classList.remove('open');
+                prompt.innerHTML = "Tap to Open Letter ✉️";
+            } else {
+                message.classList.add('open');
+                prompt.innerHTML = "Close Letter 🎀";
+            }
+        }
+
+        // 2. Create Floating Emojis
+        const emojis = ['✈️', '❤️', '🌸', '✨', '🌍', '😭', '💌', '🛫', '🫂', '🤲', '📲'];
+        const bg = document.getElementById('emojiBg');
+
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('floating-emoji');
+
+            // Randomly select emoji and horizontal position
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+
+            // Random duration and size for realistic floating effect
+            const duration = Math.random() * 3 + 4; // 4 to 7 seconds
+            emoji.style.animationDuration = duration + 's';
+            emoji.style.fontSize = Math.random() * 1.5 + 1 + 'rem'; // 1rem to 2.5rem
+
+            bg.appendChild(emoji);
+
+            // Remove emoji after animation ends to save memory
+            setTimeout(() => {
+                emoji.remove();
+            }, duration * 1000);
+        }
+
+        // Generate emojis continuously
+        setInterval(createEmoji, 400);
+    </script>
+</body>
+
+</html>
+</script>
+</body>
+
+</html>
